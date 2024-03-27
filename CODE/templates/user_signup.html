@@ -1,0 +1,163 @@
+{% extends 'base.html' %} {% block title %} User Signup {% endblock title %} {%
+block body %}
+
+<!-- form div -->
+<div class="container mb-3" style="max-width: 85%">
+  <!--  -->
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 6px;
+    "
+  >
+    <div style="font-size: 24px; font-weight: bold; color: #fff">SIGNUP</div>
+  </div>
+  <!--  -->
+  <form action="/user/signup" method="POST">
+    <div class="contrainers d-flex">
+      <!-- Name -->
+      <div class="mb-3 flex-fill me-2">
+        <label for="input_field_name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="input_field_name"
+          aria-describedby="emailHelp"
+          name="input_field_name"
+        />
+      </div>
+      <!-- phone -->
+      <div class="mb-3 ml-2">
+        <label for="input_field_phone" class="form-label">Phone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="input_field_phone"
+          aria-describedby="emailHelp"
+          name="input_field_phone"
+        />
+      </div>
+    </div>
+    <!-- address -->
+    <div class="mb-3">
+      <label for="input_field_address" class="form-label">Address</label>
+      <input
+        type="textarea"
+        class="form-control"
+        id="input_field_address"
+        aria-describedby="emailHelp"
+        name="input_field_address"
+      />
+    </div>
+    <!-- email -->
+    <div class="mb-3">
+      <label for="input_field1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="input_field1"
+        aria-describedby="emailHelp"
+        name="input_field1"
+      />
+      <div id="emailHelp" class="form-text fs-7">
+        ^_^ We'll never share your email with anyone else
+      </div>
+    </div>
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password_field_1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password_field_1"
+        name="password_field_1"
+      />
+    </div>
+
+    <!-- button -->
+    <div class="buttondiv d-flex justify-content-end">
+      <a
+        href="/user/login"
+        type="button"
+        class="btn btn-outline-dark btn-sm mx-2"
+        >Already User? Login</a
+      >
+      <button type="submit" class="btn btn-outline-dark btn-sm mr-1">
+        Signup
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- add this -->
+<!-- <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail4"
+        placeholder="Email"
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="inputPassword4"
+        placeholder="Password"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      placeholder="1234 Main St"
+    />
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputAddress2"
+      placeholder="Apartment, studio, or floor"
+    />
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" />
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip" />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" />
+      <label class="form-check-label" for="gridCheck"> Check me out </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form> -->
+{% endblock body %}

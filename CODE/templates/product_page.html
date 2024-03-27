@@ -1,0 +1,125 @@
+{% extends 'base.html' %} {% block title %} Home Page{% endblock title %}
+{%block body %}
+
+<!-- carousel -->
+<div class="container mb-2" style="max-height: 440px; max-width: 700px">
+  <div
+    id="carouselExampleAutoplaying"
+    class="carousel slide shadow"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img
+          src="static\Grocery1.jpg"
+          class="d-block w-100 rounded"
+          alt="grocery store image 1"
+        />
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img
+          src="static\Grocery2.jpg"
+          class="d-block w-100 rounded"
+          alt="grocery store image 2"
+        />
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img
+          src="static\Grocery3.jpg"
+          class="d-block w-100 rounded"
+          alt="grocery store image 3"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="container d-flex justify-content-between">
+  <!-- <div class="containername flex-fill"> -->
+  <h5
+    class="card-title text-center mb-2 ms-3 display-6 fw-medium text-capitalize"
+  >
+    Welcome{% if user.name|length!=0 %} {{user.name}} {% else %} User! {%
+    endif%}
+  </h5>
+  <!-- </div> -->
+  <!-- <div class="containersearch"> -->
+  <form class="d-flex me-2" action="/" method="POST">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      name="Searchkeyword"
+      id="Searchkeyword"
+    />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <!-- </div> -->
+</div>
+
+<!-- table div -->
+{% if items|length==0 %}
+<div class="mb-3">
+  <div class="warn_message my-3">
+    <div class="alert alert-secondary" role="alert">
+      Oops! No items in store currently. Come back Later!
+    </div>
+  </div>
+</div>
+{% else %}
+
+<div class="container">
+  {% for category, products_list in items.items() %}
+  <div class="card" style="border: 10px rgba(254, 182, 0, 0.254) ridge">
+    <div class="card-header">{{ category|capitalize }} Category</div>
+    <div class="card-body">
+      <ul class="list-group shadow">
+        {% for product in products_list %}
+        <li class="list-group-item">
+          {{ product.name }}
+          <span class="float-end">
+            <form action="/add_to_cart/{{product.id}}" method="POST">
+              Price: ₹ <strong>{{ '%.2f'|format(product.price) }} </strong>Qty
+              <input
+                type="number"
+                value="1"
+                name="prodpageqty"
+                id="prodpageqty"
+                style="width: 50px; border-radius: 4px"
+                class="btn btn-outline-dark btn-sm mx-1 text-start"
+              />
+              <input
+                type="submit"
+                class="btn btn-outline-dark btn-sm mx-1"
+                value="Add to Cart"
+              />
+            </form>
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <br />
+  {% endfor %}
+</div>
+
+{% endif %} {% endblock body %}

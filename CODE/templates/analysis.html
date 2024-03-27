@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block title %} Analysis Page {% endblock title %}
+{% block body %}
+<!--  -->
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 6px;
+  "
+>
+  <div style="font-size: 24px; font-weight: bold; color: #fff">ANALYSIS</div>
+</div>
+<!--  -->
+<div class="cont d-flex flex-wrap justify-content-center my-3">
+  <div
+    class="card rounded mx-2 my-2 border-success border-success"
+    style="width: 48%"
+  >
+    <div class="card-header display-1 text-center text-white bg-success">
+      Pie Chart <br />by Category
+    </div>
+    <img
+      src="static\pchart_category.png"
+      alt="pchart category"
+      class="card-img-top mx-auto d-block shadow"
+    />
+  </div>
+
+  <div class="card rounded mx-2 my-2 border-success" style="width: 48%">
+    <div class="card-header display-1 text-center text-white bg-success">
+      Pie Chart <br />by Items
+    </div>
+    <img
+      src="static\pchart_items.png"
+      alt="pchart items"
+      class="card-img-top mx-auto d-block shadow"
+    />
+  </div>
+  <div class="card rounded mx-2 my-2 border-success" style="width: 48%">
+    <div class="card-header display-1 text-center text-white bg-success">
+      Daily <br />Sales
+    </div>
+    <img
+      src="static/daily_sales.png"
+      alt="daily sales"
+      class="card-img-top mx-auto d-block shadow"
+    />
+  </div>
+
+  <div class="card rounded mx-2 my-2 border-success" style="width: 48%">
+    <div class="card-header display-1 text-center text-white bg-success">
+      Cumulative <br />Revenue
+    </div>
+    <img
+      src="static\cumulative_revenue.png"
+      alt="cumulative revenue"
+      class="card-img-top mx-auto d-block shadow"
+    />
+  </div>
+</div>
+{% endblock body %}

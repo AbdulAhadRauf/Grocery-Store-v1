@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block title %} User Login {% endblock title %}
+{%block body %}
+
+<!-- form div -->
+<div class="container mb-3" style="max-width: 85%">
+  <!--  -->
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 6px;
+    "
+  >
+    <div style="font-size: 24px; font-weight: bold; color: #fff">LOGIN</div>
+  </div>
+  <!--  -->
+  <form action="/user/login" method="POST">
+    <div class="mb-3">
+      <label for="input_field1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="input_field1"
+        aria-describedby="emailHelp"
+        name="input_field1"
+      />
+      <div id="emailHelp" class="form-text fs-7">
+        ^_^ We'll never share your email with anyone else
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password_field_1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password_field_1"
+        name="password_field_1"
+      />
+    </div>
+
+    <div class="buttondiv d-flex justify-content-end">
+      <a
+        href="/user/signup"
+        type="button"
+        class="btn btn-outline-dark btn-sm mx-2"
+        >New User? Signup</a
+      >
+      <button type="submit" class="btn btn-outline-dark btn-sm mr-1">
+        Login
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% block title %} Admin Dashboard {% endblock title %}
+{% block body %}
+
+<div class="container mb-3" style="max-width: 85%">
+  <!--  -->
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 6px;
+    "
+  >
+    <div style="font-size: 24px; font-weight: bold; color: #fff">
+      ADMIN DASHBOARD
+    </div>
+  </div>
+  <!--  -->
+  <form action="/admin/dashboard" method="POST">
+    <div class="cont d-flex">
+      <div class="mb-3 flex-fill me-2">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          aria-describedby="emailHelp"
+          name="name"
+        />
+      </div>
+      <div class="mb-3 flex-fill ms-2">
+        <label for="price" class="form-label">Price ₹</label>
+        <input type="text" class="form-control" id="price" name="price" />
+      </div>
+    </div>
+    <div class="cont d-flex">
+      <div class="mb-3 flex-fill me-2">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category" />
+      </div>
+      <div class="mb-3 flex-fill ms-2">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="text" class="form-control" id="quantity" name="quantity" />
+      </div>
+    </div>
+
+    <div class="buttondiv d-flex justify-content-end">
+      <button type="submit" class="btn btn-outline-dark btn-sm mr-1">
+        Add item
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- table div -->
+{% if items|length==0 %}
+<div class="mb-3">
+  <div class="warn_message my-3">
+    <div class="alert alert-secondary" role="alert">
+      No items in Store. Add items now!
+    </div>
+  </div>
+</div>
+{% else %}
+
+<div class="container">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th scope="col">Sno</th>
+        <th scope="col">Item</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.quantity}}</td>
+        <td>
+          <a
+            href="/admin/dashboard/update/{{item.id}}"
+            type="button"
+            class="btn btn-sm btn-outline-dark mx-2"
+            >Update</a
+          >
+          <a
+            href="/admin/dashboard/delete/{{item.id}}"
+            type="button"
+            class="btn btn-sm btn-outline-dark mx-2"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %} {% endblock body %}

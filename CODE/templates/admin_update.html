@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block title %} Admin Update Items {% endblock title
+%} {% block body %}
+
+<div class="container mb-3" style="max-width: 85%">
+  <!--  -->
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 6px;
+    "
+  >
+    <div style="font-size: 24px; font-weight: bold; color: #fff">
+      UPDATE ITEMS
+    </div>
+  </div>
+  <!--  -->
+  <form action="/admin/dashboard/update/{{item.id}}" method="POST">
+    <div class="cont d-flex">
+      <div class="mb-3 flex-fill me-2">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="name"
+          class="form-control"
+          id="item"
+          aria-describedby="emailHelp"
+          name="name"
+          value="{{item.name}}"
+        />
+      </div>
+      <div class="mb-3 flex-fill ms-2">
+        <label for="price" class="form-label">Price ₹</label>
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          name="price"
+          value="{{item.price}}"
+        />
+      </div>
+    </div>
+    <div class="cont d-flex">
+      <div class="mb-3 flex-fill me-2">
+        <label for="category" class="form-label">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          name="category"
+          value="{{item.category}}"
+        />
+      </div>
+      <div class="mb-3 flex-fill ms-2">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input
+          type="text"
+          class="form-control"
+          id="quantity"
+          name="quantity"
+          value="{{item.quantity}}"
+        />
+      </div>
+    </div>
+
+    <div class="buttondiv d-flex justify-content-end">
+      <button type="submit" class="btn btn-outline-dark btn-sm mr-1">
+        Update Item
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock body %}

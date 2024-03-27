@@ -1,0 +1,105 @@
+
+openapi: 3.0.0
+info:
+  title: Grocery Store API Documentation
+  version: 1.0.0
+paths:
+  /grocery_items:
+    get:
+      summary: Get all grocery items
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Item not found
+  /grocery_items/{item_id}:
+    get:
+      summary: Get a specific grocery item by ID
+      parameters:
+        - in: path
+          name: item_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Item not found
+  /grocery_items:
+    post:
+      summary: Create a new grocery item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                category:
+                  type: string
+                quantity:
+                  type: integer
+      responses:
+        '201':
+          description: Item created successfully
+        '403':
+          description: Unauthorized or Item already present
+  /grocery_items/{item_id}:
+    put:
+      summary: Update a grocery item by ID
+      parameters:
+        - in: path
+          name: item_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                category:
+                  type: string
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Item updated successfully
+        '403':
+          description: Unauthorized
+        '404':
+          description: Item not found
+    delete:
+      summary: Delete a grocery item by ID
+      parameters:
+        - in: path
+          name: item_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Item deleted successfully
+        '403':
+          description: Unauthorized
+        '404':
+          description: Item not found
+  /user:
+    get:
+      summary: Get all users
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: No user found
